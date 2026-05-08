@@ -41,4 +41,121 @@ h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 /* Basic reset end */
+
+/* Temporary background */
+.left-side-bar {
+    background-color: rgb(140, 140, 226);
+}
+.top-panel {
+    background-color: greenyellow;
+}
+.work-area {
+    background-color: rgb(189, 161, 161);
+}
+/* END */
+
+body {
+    display: grid;
+    grid-template: 16% 1fr / 16% 1fr;
+    height: 100vh;
+}
+
+/* LEFT NAV BAR */
+.left-side-bar {
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 30px
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin-top: 40px;
+}
+
+li,
+.logo-field {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin-left: 30px;
+}
+
+.nav-icon {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+}
+/* ***LEFT NAV BAR END*** */
+
+/* HEADER */
+.top-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top-panel > * {
+    display: flex;
+    justify-content: space-between;
+}
+
+.upper-area > *, 
+.lower-area > * {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 20px;
+}
+/* *** HEADER END *** */
+
+/* MAIN AREA */
+.work-area {
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 20%;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax (300px, 50%));
+    align-content: first baseline;
+}
+
+.title {
+    grid-column: 1 / 3;
+    font-weight: bold;                 /*TEMPORARY*/
+    max-height: 20px;
+}
+
+.article {
+    background-color: white;
+    margin: 20px;
+    border: 1px solid white;
+    border-radius: 6px;
+    border-left: 10px solid yellow;
+    min-width: 300px;
+    min-height: 200px;
+}
