@@ -226,7 +226,12 @@ li,
     margin: 20px 0px;
     display: flex;
     flex-direction: column;
-    max-width: 250px;
+    min-width: 250px;
+}
+
+.anno-field {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .anno-body {
@@ -238,6 +243,12 @@ li,
 
 .anno-body>* {
     font-size: 0.8rem;
+    line-height: 1.1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .anno-body#last{
@@ -246,5 +257,7 @@ li,
 /* *** TOP ELEMENT END *** */
 
 /* BOTTOM ELEMENT */
+
+
 
 /* BOTTOM ELEMENT END */
