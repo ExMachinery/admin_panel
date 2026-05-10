@@ -7,7 +7,7 @@
     font-display: swap;
 }
 
-/* Basic reset */
+/* #region Basic reset */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -56,19 +56,17 @@ ul {
     padding: 0;
     margin: 0;
 }
-/* Basic reset end */
+/* #endregion */
 
 /* Temporary background */
 .left-side-bar {
     background-color: rgb(140, 140, 226);
 }
-.top-panel {
-    background-color: greenyellow;
-}
-.work-area {
-    background-color: rgb(189, 161, 161);
-}
 /* END */
+
+:root {
+    --main-gray: rgb(80, 80, 80);
+}
 
 body {
     display: grid;
@@ -169,6 +167,7 @@ li,
     grid-template-columns: 1fr 20%;
     padding: 20px;
     gap: 20px;
+    background-color: lightgray;
 }
 
 .plate {
@@ -191,7 +190,8 @@ li,
     border: 1px solid white;
     border-radius: 6px;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    box-shadow: 5px 5px 5px var(--main-gray);
 }
 
 .article {
@@ -211,7 +211,7 @@ li,
 }
 
 .article-text {
-    color: rgb(80, 80, 80);
+    color: var(--main-gray)
 }
 
 /* RIGTH FIELD */
@@ -235,7 +235,7 @@ li,
 }
 
 .anno-body {
-    border-bottom: 1px solid rgb(80, 80, 80);
+    border-bottom: 1px solid var(--main-gray)
     padding-bottom: 5px;
     margin-left: 20px;
     margin-right: 20px;
@@ -258,6 +258,33 @@ li,
 
 /* BOTTOM ELEMENT */
 
+.trend-account {
+    display: flex;
+    margin: 10px 20px;
+    gap: 10px;
+    align-items: center;
+}
 
+.trend-account > div > p:first-child {
+    font-weight: bold;
+}
+
+.trend-account > div > p:last-child {
+    color: var(--main-gray);
+    font-size: 0.9rem;
+}
 
 /* BOTTOM ELEMENT END */
+
+
+/* #region Я раздел и я развернут */
+.chto-to-na-programmistskom {
+    flex: yes!;
+}
+/* #regionend */
+
+/* #region Я раздел и я свёрнут */
+.chto-to-na-programmistskom {
+    flex: no!;
+}
+/* #regionend */
