@@ -178,13 +178,14 @@ li:hover {
     margin: 10px 20px;
 }
 
-.user-pic {
+.user-pic img{
     height: 40px;
     width: 40px;
-    background-color: violet;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.user-pic#main {
+.user-pic#main img {
     height: 60px;
     width: 60px;
 }
