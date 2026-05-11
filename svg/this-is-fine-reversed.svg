@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <!-- Calm room gradient -->
+    <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5e6c8"/>
+      <stop offset="100%" stop-color="#e8d5a3"/>
+    </linearGradient>
+    <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8a96e"/>
+      <stop offset="100%" stop-color="#a07840"/>
+    </linearGradient>
+
+    <!-- Fire glow on dog -->
+    <radialGradient id="fireGlow" cx="50%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#ff6600" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Flame filter for flickering effect -->
+    <filter id="flameFuzz" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="2">
+        <animate attributeName="seed" values="2;5;8;2" dur="0.4s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;display=swap');
+      .caption { font-family: 'Permanent Marker', 'Comic Sans MS', cursive; }
+
+      /* Dog body flame animation */
+      @keyframes flicker {
+        0%,100% { opacity: 1; transform: scaleX(1) scaleY(1); }
+        25% { opacity: 0.85; transform: scaleX(1.03) scaleY(0.97); }
+        50% { opacity: 0.9; transform: scaleX(0.97) scaleY(1.04); }
+        75% { opacity: 0.88; transform: scaleX(1.02) scaleY(0.98); }
+      }
+      @keyframes riseFlame {
+        0%,100% { transform: translateY(0) scaleX(1); opacity: 1; }
+        50% { transform: translateY(-8px) scaleX(0.85); opacity: 0.7; }
+      }
+      .flame { animation: riseFlame 0.35s ease-in-out infinite; transform-origin: bottom center; }
+      .flame2 { animation: riseFlame 0.42s ease-in-out infinite 0.1s; transform-origin: bottom center; }
+      .flame3 { animation: riseFlame 0.38s ease-in-out infinite 0.2s; transform-origin: bottom center; }
+      .dogbody { animation: flicker 0.3s ease-in-out infinite; transform-origin: center; }
+    </style>
+  </defs>
+
+  <!-- ═══════════════ BACKGROUND / ROOM ═══════════════ -->
+  <!-- Wall -->
+  <rect x="0" y="0" width="800" height="360" fill="url(#wallGrad)"/>
+  <!-- Wallpaper subtle stripes -->
+  <rect x="0" y="0" width="800" height="360" fill="none" stroke="#d4c090" stroke-width="0.5" opacity="0.4"/>
+  <line x1="80" y1="0" x2="80" y2="360" stroke="#d4c090" stroke-width="0.4" opacity="0.5"/>
+  <line x1="160" y1="0" x2="160" y2="360" stroke="#d4c090" stroke-width="0.4" opacity="0.5"/>
+  <line x1="240" y1="0" x2="240" y2="360" stroke="#d4c090" stroke-width="0.4" opacity="0.5"/>
+  <line x1="320" y1="0" x2="320" y2="360" stroke="#d4c090" stroke-width="0.4" opacity="0.5"/>
+  <line x1="400" y1="0" x2="400" y2="360" stroke="#d4c090" stroke-width="0.4" opacity="0.5"/>
+  <line x1="480" y1="0" x2="480" y2="360" stroke="#d4c090" stroke-width="0.4" opacity="0.5"/>
+  <line x1="560" y1="0" x2="560" y2="360" stroke="#d4c090" stroke-width="0.4" opacity="0.5"/>
+  <line x1="640" y1="0" x2="640" y2="360" stroke="#d4c090" stroke-width="0.4" opacity="0.5"/>
+  <line x1="720" y1="0" x2="720" y2="360" stroke="#d4c090" stroke-width="0.4" opacity="0.5"/>
+
+  <!-- Floor -->
+  <rect x="0" y="360" width="800" height="140" fill="url(#floorGrad)"/>
+  <!-- Floor planks -->
+  <line x1="0" y1="380" x2="800" y2="380" stroke="#8a6230" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="400" x2="800" y2="400" stroke="#8a6230" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="420" x2="800" y2="420" stroke="#8a6230" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="440" x2="800" y2="440" stroke="#8a6230" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="460" x2="800" y2="460" stroke="#8a6230" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="480" x2="800" y2="480" stroke="#8a6230" stroke-width="1.5" opacity="0.5"/>
+  <!-- Vertical floor plank lines -->
+  <line x1="200" y1="360" x2="200" y2="500" stroke="#8a6230" stroke-width="0.8" opacity="0.35"/>
+  <line x1="400" y1="360" x2="400" y2="500" stroke="#8a6230" stroke-width="0.8" opacity="0.35"/>
+  <line x1="600" y1="360" x2="600" y2="500" stroke="#8a6230" stroke-width="0.8" opacity="0.35"/>
+
+  <!-- Wall / floor divider -->
+  <line x1="0" y1="360" x2="800" y2="360" stroke="#8a6230" stroke-width="3"/>
+
+  <!-- ═══════════════ CALM WINDOW (no flames outside) ═══════════════ -->
+  <!-- Window frame -->
+  <rect x="580" y="40" width="180" height="140" fill="#87CEEB" rx="4"/>
+  <!-- Blue sky outside, totally peaceful -->
+  <rect x="584" y="44" width="172" height="132" fill="#a8d8f0" rx="2"/>
+  <!-- Fluffy white clouds -->
+  <ellipse cx="630" cy="80" rx="28" ry="16" fill="white" opacity="0.9"/>
+  <ellipse cx="648" cy="72" rx="22" ry="14" fill="white" opacity="0.9"/>
+  <ellipse cx="612" cy="75" rx="18" ry="12" fill="white" opacity="0.9"/>
+  <ellipse cx="710" cy="100" rx="24" ry="13" fill="white" opacity="0.9"/>
+  <ellipse cx="726" cy="94" rx="18" ry="11" fill="white" opacity="0.9"/>
+  <!-- Sun peeking in -->
+  <circle cx="740" cy="60" rx="22" ry="22" fill="#FFE066" opacity="0.85"/>
+  <!-- Window cross bars -->
+  <line x1="670" y1="44" x2="670" y2="176" stroke="#a07840" stroke-width="4"/>
+  <line x1="584" y1="110" x2="756" y2="110" stroke="#a07840" stroke-width="4"/>
+  <!-- Window frame border -->
+  <rect x="580" y="40" width="180" height="140" fill="none" stroke="#7a5c28" stroke-width="5" rx="4"/>
+  <!-- Window sill -->
+  <rect x="570" y="178" width="200" height="10" fill="#c8a96e" rx="2"/>
+  <!-- A tiny potted plant on sill — totally fine -->
+  <rect x="654" y="160" width="12" height="18" fill="#8B4513" rx="2"/>
+  <ellipse cx="660" cy="162" rx="14" ry="10" fill="#4a8c3f"/>
+  <ellipse cx="654" cy="156" rx="9" ry="7" fill="#5aac4e"/>
+  <ellipse cx="666" cy="158" rx="8" ry="7" fill="#3d7a35"/>
+
+  <!-- ═══════════════ NORMAL PICTURE ON WALL ═══════════════ -->
+  <rect x="50" y="50" width="160" height="120" fill="#fff8e8" stroke="#7a5c28" stroke-width="5" rx="3"/>
+  <!-- Peaceful landscape in picture -->
+  <rect x="55" y="55" width="150" height="110" fill="#87CEEB" rx="2"/>
+  <ellipse cx="130" cy="120" rx="70" ry="30" fill="#5a8c3f"/>
+  <circle cx="90" cy="95" rx="20" ry="20" fill="#ffd700" opacity="0.9"/>
+  <!-- Tiny birds in picture -->
+  <path d="M100 75 Q103 72 106 75" fill="none" stroke="#333" stroke-width="1.5"/>
+  <path d="M115 70 Q118 67 121 70" fill="none" stroke="#333" stroke-width="1.5"/>
+
+  <!-- ═══════════════ TABLE - NORMAL CUP OF TEA ═══════════════ -->
+  <!-- Table -->
+  <rect x="290" y="330" width="220" height="15" fill="#8a5c2a" rx="3"/>
+  <rect x="300" y="345" width="10" height="50" fill="#7a4c1a"/>
+  <rect x="490" y="345" width="10" height="50" fill="#7a4c1a"/>
+
+  <!-- Regular cup of tea — no fire inside the cup! -->
+  <rect x="378" y="285" width="44" height="45" fill="#f5f5f5" rx="5" stroke="#ccc" stroke-width="1.5"/>
+  <rect x="382" y="289" width="36" height="37" fill="#c8860a" rx="3" opacity="0.85"/>
+  <!-- Cup handle -->
+  <path d="M422 295 Q438 305 422 318" fill="none" stroke="#ccc" stroke-width="4" stroke-linecap="round"/>
+  <!-- Steam wisps — gentle, normal -->
+  <path d="M388 282 Q390 274 388 266" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <path d="M395 280 Q397 270 395 262" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <path d="M402 282 Q404 273 402 265" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <!-- Cup saucer -->
+  <ellipse cx="400" cy="331" rx="30" ry="5" fill="#ddd" stroke="#ccc" stroke-width="1"/>
+
+  <!-- ═══════════════ THE DOG - TOTALLY ON FIRE ═══════════════ -->
+  <g transform="translate(110, 200)">
+
+    <!-- Fire glow aura around dog -->
+    <ellipse cx="130" cy="150" rx="110" ry="80" fill="url(#fireGlow)"/>
+
+    <!-- FLAMES covering the dog body — bottom/behind layer -->
+    <!-- Large base flames -->
+    <g class="flame3" style="animation-delay:0.05s">
+      <path d="M40 200 Q30 160 50 130 Q60 110 45 90 Q75 115 65 145 Q80 120 75 95 Q100 125 90 155 Q110 130 105 100 Q130 135 120 165 Q140 140 138 110 Q158 145 148 175 Q165 150 162 120 Q182 155 170 185 Q185 165 188 140 Q205 168 195 200Z" fill="#ff4400" opacity="0.95"/>
+    </g>
+    <g class="flame2">
+      <path d="M55 200 Q45 165 62 138 Q72 115 58 92 Q88 120 78 150 Q95 125 92 98 Q115 132 108 162 Q125 135 122 105 Q145 140 136 168 Q152 145 150 115 Q168 150 158 178 Q175 158 178 130 Q193 162 182 195Z" fill="#ff6600" opacity="0.9"/>
+    </g>
+    <!-- Bright inner flames -->
+    <g class="flame" style="animation-delay:0.15s">
+      <path d="M70 200 Q65 172 80 150 Q88 132 76 112 Q100 135 95 160 Q108 140 106 115 Q125 145 118 170 Q133 150 132 125 Q148 152 140 176 Q155 158 155 135 Q168 160 160 188Z" fill="#ff9900" opacity="0.88"/>
+    </g>
+    <!-- Bright yellow core flames -->
+    <g class="flame2" style="animation-delay:0.08s">
+      <path d="M85 200 Q80 175 92 156 Q100 140 90 122 Q110 142 105 165 Q116 148 115 128 Q130 152 124 174 Q136 158 136 140 Q148 160 142 182Z" fill="#ffcc00" opacity="0.8"/>
+    </g>
+
+    <!-- DOG BODY (mostly hidden in fire, silhouette) -->
+    <g class="dogbody" filter="url(#flameFuzz)">
+      <!-- Dog torso -->
+      <ellipse cx="130" cy="185" rx="75" ry="45" fill="#2a1a00" opacity="0.85"/>
+      <!-- Dog head -->
+      <circle cx="200" cy="155" r="45" fill="#2a1a00" opacity="0.85"/>
+      <!-- Dog snout -->
+      <ellipse cx="228" cy="165" rx="22" ry="16" fill="#1a0d00" opacity="0.9"/>
+      <!-- Dog ear left -->
+      <ellipse cx="178" cy="118" rx="14" ry="20" fill="#2a1a00" opacity="0.85" transform="rotate(-15, 178, 118)"/>
+      <!-- Dog ear right  -->
+      <ellipse cx="216" cy="115" rx="13" ry="18" fill="#2a1a00" opacity="0.85" transform="rotate(10, 216, 115)"/>
+
+      <!-- Dog eyes - white showing through chaos, calm expression -->
+      <!-- Left eye -->
+      <circle cx="192" cy="148" r="8" fill="white" opacity="0.95"/>
+      <circle cx="194" cy="148" r="4" fill="#111" opacity="0.9"/>
+      <!-- Right eye -->
+      <circle cx="213" cy="146" r="8" fill="white" opacity="0.95"/>
+      <circle cx="215" cy="146" r="4" fill="#111" opacity="0.9"/>
+      <!-- Calm pupils - looking straight ahead, content -->
+      <circle cx="195" cy="149" r="2" fill="white" opacity="0.7"/>
+      <circle cx="216" cy="148" r="2" fill="white" opacity="0.7"/>
+
+      <!-- Dog smile — this is fine! -->
+      <path d="M218 172 Q228 180 238 173" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+
+      <!-- Nose -->
+      <ellipse cx="232" cy="163" rx="7" ry="5" fill="#1a0d00" opacity="0.9"/>
+
+      <!-- Dog legs -->
+      <rect x="70" y="200" width="20" height="40" fill="#2a1a00" rx="5" opacity="0.85"/>
+      <rect x="105" y="205" width="20" height="38" fill="#2a1a00" rx="5" opacity="0.85"/>
+      <rect x="145" y="205" width="20" height="38" fill="#2a1a00" rx="5" opacity="0.85"/>
+      <rect x="175" y="202" width="20" height="40" fill="#2a1a00" rx="5" opacity="0.85"/>
+      <!-- Tail -->
+      <path d="M60 185 Q30 165 40 140 Q50 125 65 145" fill="#2a1a00" stroke="#2a1a00" stroke-width="8" opacity="0.8" stroke-linecap="round"/>
+    </g>
+
+    <!-- Front flame layer — over dog -->
+    <g class="flame" style="animation-delay:0.22s; opacity:0.75">
+      <path d="M75 200 Q68 178 82 158 Q90 142 80 124 Q102 144 97 167 Q110 149 109 128 Q125 150 119 172 Q132 155 131 137 Q144 158 138 180Z" fill="#ffaa00"/>
+    </g>
+
+    <!-- Sparks / embers -->
+    <circle cx="88" cy="108" r="3" fill="#ff6600" opacity="0.9">
+      <animate attributeName="cy" values="108;88;68" dur="0.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.5;0" dur="0.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="120" cy="98" r="2" fill="#ffcc00" opacity="0.9">
+      <animate attributeName="cy" values="98;75;55" dur="0.65s" repeatCount="indefinite" begin="0.2s"/>
+      <animate attributeName="opacity" values="0.9;0.4;0" dur="0.65s" repeatCount="indefinite" begin="0.2s"/>
+    </circle>
+    <circle cx="155" cy="102" r="3.5" fill="#ff4400" opacity="0.85">
+      <animate attributeName="cy" values="102;80;60" dur="0.75s" repeatCount="indefinite" begin="0.1s"/>
+      <animate attributeName="opacity" values="0.85;0.4;0" dur="0.75s" repeatCount="indefinite" begin="0.1s"/>
+    </circle>
+    <circle cx="175" cy="95" r="2" fill="#ff8800" opacity="0.8">
+      <animate attributeName="cy" values="95;72;52" dur="0.7s" repeatCount="indefinite" begin="0.35s"/>
+      <animate attributeName="opacity" values="0.8;0.3;0" dur="0.7s" repeatCount="indefinite" begin="0.35s"/>
+    </circle>
+    <circle cx="100" cy="90" r="2.5" fill="#ffee00" opacity="0.9">
+      <animate attributeName="cy" values="90;65;45" dur="0.9s" repeatCount="indefinite" begin="0.15s"/>
+      <animate attributeName="opacity" values="0.9;0.5;0" dur="0.9s" repeatCount="indefinite" begin="0.15s"/>
+    </circle>
+
+  </g>
+
+  <!-- ═══════════════ SPEECH BUBBLE ═══════════════ -->
+  <!-- Bubble -->
+  <rect x="310" y="40" width="230" height="75" fill="white" rx="14" stroke="#333" stroke-width="3"/>
+  <!-- Bubble tail pointing toward dog -->
+  <polygon points="360,115 340,145 390,115" fill="white" stroke="#333" stroke-width="2"/>
+  <!-- Text -->
+  <text x="426" y="72" text-anchor="middle" class="caption" font-size="26" fill="#111" font-family="'Permanent Marker', 'Comic Sans MS', cursive" font-weight="bold">This is fine.</text>
+  <text x="426" y="100" text-anchor="middle" class="caption" font-size="15" fill="#555" font-family="'Permanent Marker', 'Comic Sans MS', cursive">(the room is absolutely fine)</text>
+
+  <!-- ═══════════════ SMALL CAPTION AT BOTTOM ═══════════════ -->
+  <rect x="0" y="470" width="800" height="30" fill="rgba(0,0,0,0.55)"/>
+  <text x="400" y="490" text-anchor="middle" font-family="'Permanent Marker','Comic Sans MS',cursive" font-size="14" fill="white" opacity="0.9">Original meme by KC Green — redrawn with reversed chaos</text>
+
+</svg>
