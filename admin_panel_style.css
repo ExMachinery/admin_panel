@@ -58,12 +58,6 @@ ul {
 }
 /* #endregion */
 
-/* Temporary background */
-.left-side-bar {
-    background-color: rgb(140, 140, 226);
-}
-/* END */
-
 :root {
     --main-gray: rgb(80, 80, 80);
     --button-color: rgb(117, 117, 218);
@@ -89,6 +83,7 @@ body {
 
 /* #region LEFT NAV BAR */
 .left-side-bar {
+    background-color: rgb(140, 140, 226);
     grid-row: 1 / 3;
     display: flex;
     flex-direction: column;
@@ -228,6 +223,11 @@ li:hover {
 .account-name {
     font-size: 1.2rem;
     font-weight: bold;
+    flex-shrink: 0;
+}
+
+.user-name:hover {
+    text-decoration: underline;
 }
 
 .account-name > p:first-child {
@@ -295,6 +295,11 @@ li:hover {
     min-height: 200px;
 }
 
+.article:hover {
+    border-left-color: orange;
+    background-color: rgb(240, 230, 213);
+}
+
 .article-ui {
     flex: 1;
     display: flex;
@@ -303,6 +308,18 @@ li:hover {
     gap: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
+}
+
+.article-ui > button {
+    background-color: white;
+    border: 0px solid white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.article-ui > button:hover {
+    background-color: var(--button-color-hover);
+    border: 0px solid --button-color-hover;
 }
 
 .article-text {
@@ -336,6 +353,11 @@ li:hover {
     margin-right: 20px;
 }
 
+.anno-body:hover {
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
 .anno-body>* {
     font-size: 0.8rem;
     line-height: 1.1;
@@ -362,6 +384,10 @@ li:hover {
 
 .trend-account > div > p:first-child {
     font-weight: bold;
+}
+
+.trend-account > div >p:first-child:hover {
+    text-decoration: underline;
 }
 
 .trend-account > div > p:last-child {
